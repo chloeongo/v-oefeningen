@@ -6,6 +6,7 @@ export default {
       typewriterCount: 2,
       Text: 'hey pizza burger',
       showDiv: false,
+      manyFoods: ['Burrito', 'Salad', 'Cake', 'Soup', 'Fish', 'Pizza', 'Rice'],
     }
   },
 }
@@ -36,6 +37,10 @@ export default {
     <h2>you can see this div</h2>
   </div>
   <h2 v-if="showDiv !== true">now u dont</h2>
+
+  <div>
+    <p v-for="(x, index) in manyFoods">{{ index }}: "{{ x }}" <br /></p>
+  </div>
 </template>
 
 <style>
