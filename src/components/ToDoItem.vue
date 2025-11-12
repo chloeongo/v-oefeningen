@@ -5,6 +5,7 @@ export default {
       isImportant: true,
       typewriterCount: 2,
       Text: 'hey pizza burger',
+      showDiv: false,
     }
   },
 }
@@ -30,6 +31,11 @@ export default {
       <p v-else>The word burger not included</p>
     </div>
   </div>
+
+  <div v-show="showDiv">
+    <h2>you can see this div</h2>
+  </div>
+  <h2 v-if="showDiv !== true">now u dont</h2>
 </template>
 
 <style>
