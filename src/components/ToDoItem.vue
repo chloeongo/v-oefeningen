@@ -13,6 +13,23 @@ export default {
       ],
       count: 0,
       inpCount: 0,
+      itemName: null,
+      itemNumber: null,
+      important: false,
+      shoppingList: [{ name: 'Tomatoes', number: 5, important: false }],
+      methods: {
+        addItem() {
+          let item = {
+            name: this.itemName,
+            number: this.itemNumber,
+            important: this.itemImportant,
+          }
+          this.shoppingList.push(item)
+          this.itemName = null
+          this.itemNumber = null
+          this.itemImportant = false
+        },
+      },
     }
   },
 }
@@ -65,6 +82,22 @@ export default {
   <div>
     <input v-on:input="inpCount++" />
     <p>{{ 'Input event occured: ' + inpCount }}</p>
+  </div>
+
+  <div>
+    <form v-on:submit.prevent="addItem">
+      <p>Add item</p>
+      <p>Item name: <input type="text" required v-model="itemName" /></p>
+      <p>How many: <input type="number" v-model="itemNumber" /></p>
+      <p>
+        Important?
+        <label>
+          <input type="checkbox" v-model="itemImportant" />
+          {{ important }}
+        </label>
+      </p>
+      <button type="submit">Add item</button>
+    </form>
   </div>
 </template>
 
