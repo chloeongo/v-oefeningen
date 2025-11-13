@@ -6,7 +6,13 @@ export default {
       typewriterCount: 2,
       Text: 'hey pizza burger',
       showDiv: false,
-      manyFoods: ['Burrito', 'Salad', 'Cake', 'Soup', 'Fish', 'Pizza', 'Rice'],
+      manyFoods: [
+        { name: 'Pizza', likes: 0 },
+        { name: 'Sushi', likes: 0 },
+        { name: 'Hamburger', likes: 0 },
+      ],
+      count: 0,
+      inpCount: 0,
     }
   },
 }
@@ -39,7 +45,26 @@ export default {
   <h2 v-if="showDiv !== true">now u dont</h2>
 
   <div>
-    <p v-for="(x, index) in manyFoods">{{ index }}: "{{ x }}" <br /></p>
+    <div v-for="(food, index) in manyFoods" v-bind:key="index">
+      {{ index }}: {{ food.name }} <br />
+      <button class="btn" v-on:click="food.likes++">
+        {{ food.likes }} people like {{ food.name }}
+      </button>
+    </div>
+  </div>
+
+  <div>
+    <h2>Cookie swiper</h2>
+    <img
+      v-on:mouseenter="count++"
+      src="../assets/pngtree-deliciously-homemade-chocolate-chip-cookies-with-a-perfect-crunch-png-image_15989514.png"
+    />
+    <p>{{ 'Points: ' + count }}</p>
+  </div>
+
+  <div>
+    <input v-on:input="inpCount++" />
+    <p>{{ 'Input event occured: ' + inpCount }}</p>
   </div>
 </template>
 
@@ -50,5 +75,22 @@ export default {
   border-radius: 20px;
   border: 1px solid #fff;
   color: #fff;
+}
+
+.btn {
+  background-color: aquamarine;
+  border: none;
+  padding: 10px 20px 10px 20px;
+  border-radius: 15px;
+}
+
+div {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+img {
+  width: 200px;
+  height: 200px;
 }
 </style>
