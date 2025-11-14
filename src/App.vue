@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import ToDoItem from './components/ToDoItem.vue'
+import FoodItem from './components/FoodItem.vue'
 </script>
 
 <template>
@@ -18,6 +19,9 @@ import ToDoItem from './components/ToDoItem.vue'
     <ul>
       <li>
         <ToDoItem />
+        <food-item food-name="Sushi" food-desc="Japans eten" :is-favorite="true" />
+        <food-item food-name="Banana" food-desc="geel fruit" :is-favorite="false" />
+        <food-item food-name="Rice" :is-favorite="true" />
       </li>
     </ul>
   </div>
