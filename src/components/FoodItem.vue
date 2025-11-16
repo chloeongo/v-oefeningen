@@ -3,6 +3,7 @@
     <h2>{{ foodName }}</h2>
     <p>{{ foodDesc }}</p>
     <img src="../assets/logo.svg" v-show="isFavorite" />
+    <button v-on:click="toggleFavorite">Favorite</button>
   </div>
 </template>
 
@@ -20,6 +21,14 @@ export default {
       default: 'No desc',
     },
     isFavorite: Boolean,
+  },
+  methods: {
+    toggleFavorite() {
+      this.$emit('toggle-favortie')
+    },
+    receiveEmit() {
+      alert('Hello World!')
+    },
   },
 }
 </script>

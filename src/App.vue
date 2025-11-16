@@ -19,9 +19,9 @@ import FoodItem from './components/FoodItem.vue'
     <ul>
       <li>
         <ToDoItem />
-        <food-item food-name="Sushi" food-desc="Japans eten" :is-favorite="true" />
-        <food-item food-name="Banana" food-desc="geel fruit" :is-favorite="false" />
-        <food-item food-name="Rice" :is-favorite="true" />
+        <food-item food-name="Sushi" food-desc="Japans eten" @toggle-favorite="receiveEmit" />
+        <food-item food-name="Banana" food-desc="geel fruit" @toggle-favorite="receiveEmit" />
+        <food-item food-name="Rice" @toggle-favorite="receiveEmit" />
       </li>
     </ul>
   </div>
