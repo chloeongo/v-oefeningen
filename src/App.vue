@@ -27,8 +27,13 @@ import SlotComp from './components/SlotComp.vue'
     </ul>
 
     <div>
-      <SlotComp>
+      <SlotComp #aSlot>
         <h5>We buns</h5>
+        <p>dit zit boven</p>
+      </SlotComp>
+      <SlotComp v-slot:bSlot>
+        <h5>W</h5>
+        <p>deze onder</p>
       </SlotComp>
     </div>
   </div>

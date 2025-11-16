@@ -3,7 +3,12 @@
 <template>
   <div>
     <h3>Slot component</h3>
-    <slot></slot>
+    <div>
+      <slot name="aSlot"></slot>
+    </div>
+    <div>
+      <slot name="bSlot"></slot>
+    </div>
   </div>
 </template>
 
