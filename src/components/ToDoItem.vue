@@ -2,9 +2,12 @@
 export default {
   data() {
     return {
+      msgAndId: '',
+      birbCount: 0,
       isImportant: true,
       typewriterCount: 2,
       Text: 'hey pizza burger',
+      text: '',
       showDiv: false,
       manyFoods: [
         { name: 'Pizza', likes: 0 },
@@ -17,20 +20,30 @@ export default {
       itemNumber: null,
       important: false,
       shoppingList: [{ name: 'Tomatoes', number: 5, important: false }],
-      methods: {
-        addItem() {
-          let item = {
-            name: this.itemName,
-            number: this.itemNumber,
-            important: this.itemImportant,
-          }
-          this.shoppingList.push(item)
-          this.itemName = null
-          this.itemNumber = null
-          this.itemImportant = false
-        },
-      },
     }
+  },
+  methods: {
+    addItem() {
+      let item = {
+        name: this.itemName,
+        number: this.itemNumber,
+        important: this.itemImportant,
+      }
+      this.shoppingList.push(item)
+      this.itemName = null
+      this.itemNumber = null
+      this.itemImportant = false
+    },
+    changeText() {
+      this.text = 'Hello World!'
+    },
+    addBirb(number) {
+      this.birbCount += number
+    },
+    myMethod(e, msg) {
+      this.msgAndId = msg + ', '
+      this.msgAndId += e.target.id
+    },
   },
 }
 </script>
@@ -99,6 +112,26 @@ export default {
       <button type="submit">Add item</button>
     </form>
   </div>
+
+  <div>
+    <p>Click on the box below:</p>
+    <div v-on:click="changeText" class="methodBox">
+      {{ text }}
+    </div>
+
+    <div>
+      <h2>Birb counter</h2>
+      <p>{{ birbCount }}</p>
+      <button class="btn" @click="addBirb(1)">+1</button>
+      <button class="btn" @click="addBirb(5)">+5</button>
+      <button class="btn" @click="addBirb(-1)">-1</button>
+
+      <div>
+        <img src="../assets/logo.svg" id="tiger" v-on:click="myMethod($event, 'Hello')" />
+        <p>"{{ msgAndId }}"</p>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style>
@@ -110,11 +143,19 @@ export default {
   color: #fff;
 }
 
+.methodBox {
+  background-color: lightgreen;
+  padding: 20px;
+  font-weight: bold;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 .btn {
   background-color: aquamarine;
   border: none;
   padding: 10px 20px 10px 20px;
   border-radius: 15px;
+  margin-right: 10px;
 }
 
 div {
