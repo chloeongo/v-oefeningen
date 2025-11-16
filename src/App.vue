@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import ToDoItem from './components/ToDoItem.vue'
 import FoodItem from './components/FoodItem.vue'
+import SlotComp from './components/SlotComp.vue'
 </script>
 
 <template>
@@ -24,6 +25,12 @@ import FoodItem from './components/FoodItem.vue'
         <food-item food-name="Rice" @toggle-favorite="receiveEmit" />
       </li>
     </ul>
+
+    <div>
+      <SlotComp>
+        <h5>We buns</h5>
+      </SlotComp>
+    </div>
   </div>
 
   <RouterView />
