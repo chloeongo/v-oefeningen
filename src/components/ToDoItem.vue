@@ -2,6 +2,9 @@
 export default {
   data() {
     return {
+      taskName: null,
+      taskDesc: null,
+      taskList: [{ name: '', desc: '' }],
       msgAndId: '',
       birbCount: 0,
       isImportant: true,
@@ -43,6 +46,15 @@ export default {
     myMethod(e, msg) {
       this.msgAndId = msg + ', '
       this.msgAndId += e.target.id
+    },
+    addTask() {
+      let task = {
+        name: this.taskName,
+        desc: this.taskDesc,
+      }
+      this.taskList.push(task)
+      this.taskName = null
+      this.taskDesc = null
     },
   },
 }
@@ -131,10 +143,39 @@ export default {
         <p>"{{ msgAndId }}"</p>
       </div>
     </div>
+
+    <div class="formDiv">
+      <h1>Add task</h1>
+      <form @submit.prevent="addTask">
+        <label for="task">Task</label> <br />
+        <input name="task" type="text" required v-model="taskName" /> <br />
+
+        <label for="taskDesc">Description</label> <br />
+        <input name="taskDesc" type="text" required v-model="taskDesc" /> <br />
+
+        <button class="btn" style="margin-top: 10px">Enter</button>
+      </form>
+      <ul>
+        <li v-for="task in taskList">{{ task.name }}, {{ task.desc }}</li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <style>
+.formDiv {
+  padding: 20px;
+  border-radius: 20px;
+  background-color: rgb(255, 0, 144);
+  color: #fff;
+}
+
+.formDiv input {
+  padding: 0.6em;
+  border-radius: 10px;
+  border: none;
+}
+
 .myClass {
   background-color: rgb(226, 43, 128);
   padding: 20px;
