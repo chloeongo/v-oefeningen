@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import ToDoItem from './components/ToDoItem.vue'
 import FoodItem from './components/FoodItem.vue'
 import SlotComp from './components/SlotComp.vue'
+import Comp from './components/Comp.vue'
 </script>
 
 <template>
@@ -36,6 +37,7 @@ import SlotComp from './components/SlotComp.vue'
         <p>deze onder</p>
       </SlotComp>
     </div>
+    <Comp />
   </div>
 
   <RouterView />
