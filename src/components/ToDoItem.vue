@@ -2,6 +2,10 @@
 export default {
   data() {
     return {
+      inpAddress: '',
+      feedbackText: '',
+      myClass: 'invalid',
+      rangeVal: 70,
       taskName: null,
       taskDesc: null,
       taskList: [{ name: '', desc: '' }],
@@ -55,6 +59,28 @@ export default {
       this.taskList.push(task)
       this.taskName = null
       this.taskDesc = null
+    },
+  },
+  watch: {
+    rangeVal(val) {
+      if (val > 20 && val < 60) {
+        if (val < 40) {
+          this.rangeVal = 20
+        } else {
+          this.rangeVal = 60
+        }
+      }
+    },
+    npAddress(newVal, oldVal) {
+      if (!newVal.includes('@')) {
+        this.feedbackText = 'The e-mail address is NOT valid'
+        this.myClass = 'invalid'
+      } else if (!oldVal.includes('@') && newVal.includes('@')) {
+        this.feedbackText = 'Perfect! You fixed it!'
+        this.myClass = 'valid'
+      } else {
+        this.feedbackText = 'The e-mail address is valid :)'
+      }
     },
   },
 }
@@ -161,7 +187,15 @@ export default {
     </div>
   </div>
 
-  <div></div>
+  <div>
+    <input type="range" v-model="rangeVal" />
+    <p>{{ rangeVal }}</p>
+
+    <br />
+
+    <input v-type="email" v-model="inpAddress" />
+    <p v-bind:class="myClass">{{ feedbackText }}</p>
+  </div>
 </template>
 
 <style>
